@@ -275,6 +275,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
                                                 <div class="container-fluid center-block col-md-12">
                                                     <%=fil.getDescricao()%>
+                                                    
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dias
+                                                        <span class="caret"></span></button>
+                                                        <ul class="dropdown-menu">
+                                                            <li>Segunda-feira</li>
+                                                            <li>16</li>
+                                                            <li>18</li>
+                                                        </ul>
+                                                    </div>
+                                                    Numero de lugares: 32</br>
+                                                    Sala: 02
+                                                </div>
+                                                <div class="container-fluid center-block col-md-12">
+                                                    
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Horarios
+                                                        <span class="caret"></span></button>
+                                                        <ul class="dropdown-menu">
+                                                            <li>12</li>
+                                                            <li>16</li>
+                                                            <li>18</li>
+                                                        </ul>
+                                                    </div>
+                                                    Numero de lugares: 32</br>
+                                                    Sala: 02
                                                 </div>
 					<div class="container-fluid center-block col-md-12">
                                             <button type="button" class="btn btn-success col-md-4 center-block">Comprar Ingresso !</button>
