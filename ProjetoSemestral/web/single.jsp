@@ -299,8 +299,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                             <li>18</li>
                                                         </ul>
                                                     </div>
-                                                    Numero de lugares: 32</br>
-                                                    Sala: 02
                                                 </div>
 					<div class="container-fluid center-block col-md-12">
                                             <button type="button" class="btn btn-success col-md-4 center-block">Comprar Ingresso !</button>
