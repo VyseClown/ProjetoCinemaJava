@@ -3,6 +3,8 @@
     Created on : 11/04/2018, 13:54:37
     Author     : VyseClown
 --%>
+<%@page import="DAO.SessaoDAO"%>
+<%@page import="Bean.Sessoes"%>
 <%@page import="Bean.Filmes"%>
 <%@page import="DAO.FilmesDAO"%>
 <%@page import="DAO.UsuariosDAO"%>
@@ -85,6 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <%
     String idFilme = request.getParameter("id");
     Filmes fil = new Filmes();
+    List<Sessoes> ses;
     if(idFilme == null)
     {
         response.sendRedirect("index.jsp?msg=Filme não encontrado");
@@ -92,6 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     else
     {
         fil = (new FilmesDAO()).selecionarFilme(Integer.parseInt(idFilme));
+        ses = (new SessaoDAO().selecionar(Integer.parseInt(idFilme)));
     }
 %>
 <%
@@ -280,9 +284,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dias
                                                         <span class="caret"></span></button>
                                                         <ul class="dropdown-menu">
-                                                            <li>Segunda-feira</li>
-                                                            <li>16</li>
-                                                            <li>18</li>
+                                                            <li>15/05</li>
+                                                            <li>16/05</li>
+                                                            <li>17/05</li>
                                                         </ul>
                                                     </div>
                                                     Numero de lugares: 32</br>
@@ -303,6 +307,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="container-fluid center-block col-md-12">
                                             <button type="button" class="btn btn-success col-md-4 center-block">Comprar Ingresso !</button>
                                         </div>
+                                                    
+                                                    <div class="col-md-6">
+                        <div id="DiasDisponiveis" class="tab-pane fade in active" >
+                            <%  for (Sessoes elem : new SessaoDAO().selecionar(fil.getId())) {
+                            %>
+                            <div class="item  col-xs-4 col-lg-4">
+                                <div class="thumbnail">
+                                    <h2>Sessão das : </h2>
+                                    <div class="caption">
+
+                                        <h3 class="group inner list-group-item-text fas fa-stopwatch" maxlength="168"> <%=elem.getHorarioInicio()%></h3>
+                                        <h3 class="group inner list-group-item-heading fas fa-calendar-alt"> <%=elem.getData()%></h3>
+
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-12">
+                                                <a class="btn btn-success" href="compraIgresso.jsp?codigosessao=<%=elem.getId()%>">Comprar Ingresso</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <%
+                                }
+                            %>
+
+                        </div>
+                    </div>
                                     
 					<div class="clearfix"> </div>
 				</div>				
