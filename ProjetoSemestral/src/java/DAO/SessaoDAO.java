@@ -36,4 +36,36 @@ public class SessaoDAO {
         con.close();
         return fil;
     }
+    public Sessoes selecionarSessao(int id) throws SQLException{
+        Connection con  = ConnectionFactory.getConnection();
+        Sessoes fil = new Sessoes();
+        PreparedStatement ps = con.prepareStatement("select * "
+                + " from sessao"
+                + " inner join filme on sessao.idFilme = filme.id"
+                + " where sessao.id = ?");
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            fil = (new Sessoes(rs.getInt("id"),rs.getInt("idFilme"), rs.getTime("horarioInicio"), rs.getInt("idSala"), rs.getDate("data"), rs.getInt("qtdLugares"), rs.getString("nome"), rs.getFloat("valor")));
+        }
+        ps.close();
+        con.close();
+        return fil;
+    }
+    public void diminuirIngresso(int idSessao, int quantidade) throws SQLException{
+        Connection con  = ConnectionFactory.getConnection();
+        Sessoes fil = new Sessoes();
+        PreparedStatement ps = con.prepareStatement("update sessao "
+                + "set qtdLugares = qtdLugares-?"
+                + " where sessao.id = ?");
+        ps.setInt(1, quantidade);
+        ps.setInt(2, idSessao);
+        ps.executeUpdate();
+        //while(rs.next()){
+        //    fil = (new Sessoes(rs.getInt("id"),rs.getInt("idFilme"), rs.getTime("horarioInicio"), rs.getInt("idSala"), rs.getDate("data"), rs.getInt("qtdLugares"), rs.getString("nome"), rs.getFloat("valor")));
+        //}
+        ps.close();
+        con.close();
+        //return fil;
+    }
 }

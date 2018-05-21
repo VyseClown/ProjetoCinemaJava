@@ -5,6 +5,8 @@
  */
 package Bean;
 
+import java.sql.Time;
+
 /**
  *
  * @author VyseClown
@@ -14,7 +16,7 @@ public class Filmes {
     private String categoria;
     private String faixaetaria;
     private String descricao;
-    private int duracao;
+    private Time duracao;
     private int id;
     private int emCartaz;
     private String img;
@@ -22,7 +24,7 @@ public class Filmes {
     public Filmes() {
     }
 
-    public Filmes(String nome, String categoria, String faixaetaria, String descricao, int duracao, int id, int emCartaz, String img) {
+    public Filmes(String nome, String categoria, String faixaetaria, String descricao, Time duracao, int id, int emCartaz, String img) {
         this.nome = nome;
         this.categoria = categoria;
         this.faixaetaria = faixaetaria;
@@ -65,11 +67,11 @@ public class Filmes {
         this.descricao = descricao;
     }
 
-    public int getDuracao() {
+    public Time getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(int duracao) {
+    public void setDuracao(Time duracao) {
         this.duracao = duracao;
     }
 

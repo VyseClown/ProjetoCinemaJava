@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -25,7 +26,7 @@ public class FilmesDAO {
         //ps.setInt(1, codigo);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
-            fil.add(new Filmes(rs.getString("nome"),rs.getString("categoria"), rs.getString("faixaetaria"), rs.getString("descricao"), rs.getInt("duracao"), rs.getInt("id"), rs.getInt("emCartaz"), rs.getString("img")));
+            fil.add(new Filmes(rs.getString("nome"),rs.getString("categoria"), rs.getString("faixaetaria"), rs.getString("descricao"), rs.getTime("duracao"), rs.getInt("id"), rs.getInt("emCartaz"), rs.getString("img")));
         }
         ps.close();
         con.close();
@@ -39,7 +40,7 @@ public class FilmesDAO {
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
-            fil = (new Filmes(rs.getString("nome"),rs.getString("categoria"), rs.getString("faixaetaria"), rs.getString("descricao"), rs.getInt("duracao"), rs.getInt("id"), rs.getInt("emCartaz"), rs.getString("img")));
+            fil = (new Filmes(rs.getString("nome"),rs.getString("categoria"), rs.getString("faixaetaria"), rs.getString("descricao"), rs.getTime("duracao"), rs.getInt("id"), rs.getInt("emCartaz"), rs.getString("img")));
         }
         ps.close();
         con.close();

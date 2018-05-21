@@ -278,38 +278,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					</div>
                                                 <div class="container-fluid center-block col-md-12">
-                                                    <%=fil.getDescricao()%>
-                                                    
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dias
-                                                        <span class="caret"></span></button>
-                                                        <ul class="dropdown-menu">
-                                                            <li>15/05</li>
-                                                            <li>16/05</li>
-                                                            <li>17/05</li>
-                                                        </ul>
+                                                    <div class="row">
+                                                        <div class="col-lg-2">Faixa etaria:<br/><span class="glyphicon glyphicon-user"><%=fil.getFaixaetaria()%> anos</div>
+                                                        <div class="col-lg-8"><%=fil.getDescricao()%></div>
+                                                        <div class="col-lg-2 fas fa-stopwatch" maxlength="168">Duração: <br/><span class="glyphicon glyphicon-film"></span><%=fil.getDuracao()%></div>
                                                     </div>
-                                                    Numero de lugares: 32</br>
-                                                    Sala: 02
-                                                </div>
-                                                <div class="container-fluid center-block col-md-12">
                                                     
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Horarios
-                                                        <span class="caret"></span></button>
-                                                        <ul class="dropdown-menu">
-                                                            <li>12</li>
-                                                            <li>16</li>
-                                                            <li>18</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-					<div class="container-fluid center-block col-md-12">
-                                            <button type="button" class="btn btn-success col-md-4 center-block">Comprar Ingresso !</button>
-                                        </div>
-                                                    
+                                                    <br/>
                                                     <div class="col-md-6">
-                        <div id="DiasDisponiveis" class="tab-pane fade in active" >
+                        <div id="DiasDisponiveis" class="tab-pane fade in active container-fluid center-block" >
                             <%  for (Sessoes elem : new SessaoDAO().selecionar(fil.getId())) {
                             %>
                             <div class="item  col-xs-4 col-lg-4">
@@ -319,12 +296,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                         <h3 class="group inner list-group-item-text fas fa-stopwatch" maxlength="168"> <%=elem.getHorarioInicio()%></h3>
                                         <h3 class="group inner list-group-item-heading fas fa-calendar-alt"> <%=elem.getData()%></h3>
-
+                                        <h3 class="group inner list-group-item-test">Lugares:<%=elem.getQtdLugares()%></h3>
+                                        <form action="srvFilme" method="post">
                                         <div class="row">
                                             <div class="col-xs-12 col-md-12">
-                                                <a class="btn btn-success" href="compraIgresso.jsp?codigosessao=<%=elem.getId()%>">Comprar Ingresso</a>
+                                                <input type="hidden" id="txtcodigo" name="txtCodigoHorario" value="<%=elem.getId()%>"/>
+                                                <input class="btn btn-success col-lg-12" type="submit" value="Comprar" name="btnComprar">
                                             </div>
                                         </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
