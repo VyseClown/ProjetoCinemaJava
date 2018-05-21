@@ -301,7 +301,90 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="row">
                                             <div class="col-xs-12 col-md-12">
                                                 <input type="hidden" id="txtcodigoSessao" name="txtcodigoSessao" value="<%=elem.getId()%>"/>
-                                                
+                                                <div class="form-group">
+                                                    <script type="text/javascript">
+                                                        function ValidateCreditCardNumber() {
+
+  var ccNum = document.getElementById("cardNum").value;
+  var visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+  var mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
+  var amexpRegEx = /^(?:3[47][0-9]{13})$/;
+  var discovRegEx = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
+  var isValid = false;
+
+  if (visaRegEx.test(ccNum)) {
+    isValid = true;
+  } else if(mastercardRegEx.test(ccNum)) {
+    isValid = true;
+  } else if(amexpRegEx.test(ccNum)) {
+    isValid = true;
+  } else if(discovRegEx.test(ccNum)) {
+    isValid = true;
+  }
+
+  if(isValid) {
+     alert("Obrigado pela compra!");
+  } else {
+     alert("Por favor digite um numero valido!");
+  }
+}
+                                                    </script>
+                                                <label for="usr">Numero do cartão:</label>
+                                                <input type="text" class="form-control" id="cardNum" onblur="ValidateCreditCardNumber()">
+                                                <label for="usr">Nome:</label>
+                                                <input type="text" class="form-control" id="usr">
+<div class="selects-date selecters">
+          <div class="day-select"><span>Dia</span>
+            <select id="dates">
+              <option value="">1</option>
+              <option value="">2</option>
+              <option value="">3</option>
+              <option value="">4</option>
+              <option value="">5</option>
+              <option value="">6</option>
+              <option value="">7</option>
+              <option value="">8</option>
+              <option value="">9</option>
+              <option value="">10</option>
+              <option value="">11</option>
+              <option value="">12</option>
+              <option value="">13</option>
+              <option value="">14</option>
+              <option value="">15</option>
+              <option value="">16</option>
+              <option value="">17</option>
+              <option value="">18</option>
+              <option value="">19</option>
+              <option value="">20</option>
+              <option value="">21</option>
+              <option value="">22</option>
+              <option value="">23</option>
+              <option value="">24</option>
+              <option value="">25</option>
+              <option value="">26</option>
+              <option value="">27</option>
+              <option value="">28</option>
+              <option value="">29</option>
+              <option value="">30</option>
+            </select>
+          </div>
+          <div class="year-select"><span>Ano</span>
+            <select id="dates">
+              <option value="">18</option>
+              <option value="">19</option>
+              <option value="">20</option>
+              <option value="">21</option>
+              <option value="">22</option>
+              <option value="">23</option>
+              <option value="">24</option>
+              <option value="">25</option>
+              <option value="">26</option>
+            </select>
+          </div>
+        </div>
+                                                <label for="usr">Codigo de segurança:</label>
+                                                <input type="text" class="form-control" id="usr">
+                                                </div>
                                                 <input class="btn btn-success col-lg-12" type="submit" value="Comprar" name="btnComprar">
                                             </div>
                                         </div>
