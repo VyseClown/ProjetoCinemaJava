@@ -52,7 +52,7 @@ public class SessaoDAO {
         con.close();
         return fil;
     }
-    public void diminuirIngresso(int idSessao, int quantidade) throws SQLException{
+    public void diminuirIngresso(int quantidade, int idSessao) throws SQLException{
         Connection con  = ConnectionFactory.getConnection();
         Sessoes fil = new Sessoes();
         PreparedStatement ps = con.prepareStatement("update sessao "

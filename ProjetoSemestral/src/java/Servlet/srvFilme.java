@@ -39,11 +39,11 @@ public class srvFilme extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             try{
             if(request.getParameter("btnComprar") != null){
-                int id = Integer.parseInt(request.getParameter("txtCodigoHorario"));
+                int id = Integer.parseInt(request.getParameter("txtcodigoSessao"));
                 if(id != 0){
                     Sessoes sess = (new SessaoDAO()).selecionarSessao(id);
                     if(sess!=null){
-                        (new SessaoDAO()).diminuirIngresso(1, sess.getId());
+                        (new SessaoDAO()).diminuirIngresso(1, id);
                         response.sendRedirect("single.jsp?id="+ sess.getIdFilme());
                         
                         
