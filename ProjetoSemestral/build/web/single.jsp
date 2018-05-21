@@ -301,6 +301,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="row">
                                             <div class="col-xs-12 col-md-12">
                                                 <input type="hidden" id="txtcodigoSessao" name="txtcodigoSessao" value="<%=elem.getId()%>"/>
+                                                
                                                 <input class="btn btn-success col-lg-12" type="submit" value="Comprar" name="btnComprar">
                                             </div>
                                         </div>
@@ -320,6 +321,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"> </div>
 				</div>				
 
+                            
+                            
+                            
+                            
+                            
 				
 				<div class="clearfix"> </div>
 			</div>
