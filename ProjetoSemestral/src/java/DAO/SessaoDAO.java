@@ -52,7 +52,7 @@ public class SessaoDAO {
         con.close();
         return fil;
     }
-    public void diminuirIngresso(int quantidade, int idSessao) throws SQLException{
+    public void diminuirIngresso(int quantidade, int idSessao, int idPessoa) throws SQLException{
         Connection con  = ConnectionFactory.getConnection();
         Sessoes fil = new Sessoes();
         PreparedStatement ps = con.prepareStatement("update sessao "
@@ -61,6 +61,12 @@ public class SessaoDAO {
         ps.setInt(1, quantidade);
         ps.setInt(2, idSessao);
         ps.executeUpdate();
+        
+        PreparedStatement ps2 = con.prepareStatement("insert into venda (pessoa,sessao,quantidade) values (?,?,?)");
+        ps2.setInt(1, idPessoa);
+        ps2.setInt(2, idSessao);
+        ps2.setInt(3, quantidade);
+        ps2.execute();
         //while(rs.next()){
         //    fil = (new Sessoes(rs.getInt("id"),rs.getInt("idFilme"), rs.getTime("horarioInicio"), rs.getInt("idSala"), rs.getDate("data"), rs.getInt("qtdLugares"), rs.getString("nome"), rs.getFloat("valor")));
         //}

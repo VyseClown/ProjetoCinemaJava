@@ -301,6 +301,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="row">
                                             <div class="col-xs-12 col-md-12">
                                                 <input type="hidden" id="txtcodigoSessao" name="txtcodigoSessao" value="<%=elem.getId()%>"/>
+                                                <input type="hidden" id="txtcodigo"
+                                                                    name="txtcodigo" value="<%=codigo%>"/>
                                                 <div class="form-group">
                                                     <script type="text/javascript">
                                                         function ValidateCreditCardNumber() {
@@ -329,6 +331,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   }
 }
                                                     </script>
+                                                <label for="usr">Quantidade</label>
+                                                <input type="number" class="form-control" id="qtd" name="qtd">
                                                 <label for="usr">Numero do cartão:</label>
                                                 <input type="text" class="form-control" id="cardNum" onblur="ValidateCreditCardNumber()">
                                                 <label for="usr">Nome:</label>

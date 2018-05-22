@@ -40,10 +40,12 @@ public class srvFilme extends HttpServlet {
             try{
             if(request.getParameter("btnComprar") != null){
                 int id = Integer.parseInt(request.getParameter("txtcodigoSessao"));
+                int idPessoa = Integer.parseInt(request.getParameter("txtcodigo"));
+                int qtd = Integer.parseInt(request.getParameter("qtd"));
                 if(id != 0){
                     Sessoes sess = (new SessaoDAO()).selecionarSessao(id);
                     if(sess!=null){
-                        (new SessaoDAO()).diminuirIngresso(1, id);
+                        (new SessaoDAO()).diminuirIngresso(qtd, id, idPessoa);
                         response.sendRedirect("single.jsp?id="+ sess.getIdFilme());
                         
                         
