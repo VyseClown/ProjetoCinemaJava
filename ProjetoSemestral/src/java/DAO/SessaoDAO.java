@@ -74,4 +74,17 @@ public class SessaoDAO {
         con.close();
         //return fil;
     }
+    
+    public Bean.Venda encontrarUltimaVenda() throws SQLException{
+        Connection con  = ConnectionFactory.getConnection();
+        Bean.Venda ven = new Bean.Venda();
+        PreparedStatement ps = con.prepareStatement("SELECT * FROM venda ORDER BY id DESC LIMIT 1");
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            ven = (new Bean.Venda(rs.getInt("id"),rs.getInt("pessoa"), rs.getInt("sessao"), rs.getInt("quantidade")));
+        }
+        ps.close();
+        con.close();
+        return ven;
+    } 
 }

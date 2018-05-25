@@ -301,8 +301,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="row">
                                             <div class="col-xs-12 col-md-12">
                                                 <input type="hidden" id="txtcodigoSessao" name="txtcodigoSessao" value="<%=elem.getId()%>"/>
-                                                <input type="hidden" id="txtcodigo"
-                                                                    name="txtcodigo" value="<%=codigo%>"/>
+                                                <input type="hidden" id="txtcodigo" name="txtcodigo" value="<%=codigo%>"/>
                                                 <div class="form-group">
                                                     <script type="text/javascript">
                                                         function ValidateCreditCardNumber() {
@@ -331,12 +330,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   }
 }
                                                     </script>
+                                                    
                                                 <label for="usr">Quantidade</label>
-                                                <input type="number" class="form-control" id="qtd" name="qtd">
+                                                <input type="number" class="form-control" id="qtd" name="qtd" min="0" max="10">
                                                 <label for="usr">Numero do cartão:</label>
-                                                <input type="text" class="form-control" id="cardNum" onblur="ValidateCreditCardNumber()">
+                                                <input type="text" class="form-control" id="cardNum" min="0" max="30" onblur="ValidateCreditCardNumber()">
                                                 <label for="usr">Nome:</label>
-                                                <input type="text" class="form-control" id="usr">
+                                                <input type="text" class="form-control" id="usr" min="0" max="100">
 <div class="selects-date selecters">
           <div class="day-select"><span>Dia</span>
             <select id="dates">
@@ -387,9 +387,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           </div>
         </div>
                                                 <label for="usr">Codigo de segurança:</label>
-                                                <input type="text" class="form-control" id="usr">
+                                                <input type="text" class="form-control" id="usr" min="0" max="3">
                                                 </div>
-                                                <input class="btn btn-success col-lg-12" type="submit" value="Comprar" name="btnComprar">
+                                                <script type="text/javascript">
+                                                        function AposCompra() {
+<%
+    //Bean.Venda ven = new Bean.Venda();
+    //ven = (new SessaoDAO().encontrarUltimaVenda());
+%>
+
+    var e = document.getElementById("qtd");
+    //var qtdLugares = e.text;
+
+     alert("Obrigado <%=usuario%> pela compra de ingresso(s) para o filme <%=fil.getNome()%>");
+  }
+                                                                                            //para a sessão do dia <//%=elem.getData()%> as <//%=elem.getHorarioInicio()%>
+
+                                                    </script>
+                                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+                                                <input class="btn btn-success col-lg-12" type="submit" value="Comprar" name="btnComprar" onClick="AposCompra()">
                                             </div>
                                         </div>
                                         </form>
