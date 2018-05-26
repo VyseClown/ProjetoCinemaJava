@@ -127,7 +127,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header">
 		<div class="container">
 			<div class="w3layouts_logo">
-				<a href="index.jsp"><h1>One<span>Movies</span></h1></a>
+				<a href="index.jsp"><h1>CINE<span>TOLEDO</span></h1></a>
 			</div>
 			<div class="w3_search">
 				<form action="#" method="post">
@@ -285,7 +285,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     </div>
                                                     
                                                     <br/>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-8 col-md-offset-1">
                         <div id="DiasDisponiveis" class="tab-pane fade in active container-fluid center-block" >
                             <%  for (Sessoes elem : new SessaoDAO().selecionar(fil.getId())) {
                             %>
@@ -293,7 +293,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="thumbnail">
                                     <h2>Sessão das : </h2>
                                     <div class="caption">
-
+                                        
                                         <h3 class="group inner list-group-item-text fas fa-stopwatch" maxlength="168"> <%=elem.getHorarioInicio()%></h3>
                                         <h3 class="group inner list-group-item-heading fas fa-calendar-alt"> <%=elem.getData()%></h3>
                                         <h3 class="group inner list-group-item-test">Lugares:<%=elem.getQtdLugares()%></h3>
@@ -324,21 +324,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   }
 
   if(isValid) {
-     alert("Obrigado pela compra!");
+     //alert("Obrigado pela compra!");
   } else {
-     alert("Por favor digite um numero valido!");
+     alert("Por favor digite um numero de cartão valido!");
   }
 }
                                                     </script>
-                                                    
-                                                <label for="usr">Quantidade</label>
+                                                    <!-- Modal -->
+<div id="modalVenda<%=elem.getId()%>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%=fil.getNome()%></h4>
+      </div>
+      <div class="modal-body">
+          <label for="usr">Quantidade de ingressos</label>
                                                 <input type="number" class="form-control" id="qtd" name="qtd" min="0" max="10">
-                                                <label for="usr">Numero do cartão:</label>
-                                                <input type="text" class="form-control" id="cardNum" min="0" max="30" onblur="ValidateCreditCardNumber()">
-                                                <label for="usr">Nome:</label>
+        <label for="usr">Numero do cartão:</label>
+                                                <input type="text" class="form-control" id="cardNum" min="0" max="30">
+                                                <label for="usr">Nome no cartão:</label>
                                                 <input type="text" class="form-control" id="usr" min="0" max="100">
+                                                <div class = row>
+                                                    <div class="col-md-4 col-md-offset-1">
 <div class="selects-date selecters">
-          <div class="day-select"><span>Dia</span>
+    <label>Vencimento do cartão:</label>
+          <div class="day-select"><span>MÊS</span>
             <select id="dates">
               <option value="">1</option>
               <option value="">2</option>
@@ -352,24 +365,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               <option value="">10</option>
               <option value="">11</option>
               <option value="">12</option>
-              <option value="">13</option>
-              <option value="">14</option>
-              <option value="">15</option>
-              <option value="">16</option>
-              <option value="">17</option>
-              <option value="">18</option>
-              <option value="">19</option>
-              <option value="">20</option>
-              <option value="">21</option>
-              <option value="">22</option>
-              <option value="">23</option>
-              <option value="">24</option>
-              <option value="">25</option>
-              <option value="">26</option>
-              <option value="">27</option>
-              <option value="">28</option>
-              <option value="">29</option>
-              <option value="">30</option>
             </select>
           </div>
           <div class="year-select"><span>Ano</span>
@@ -386,8 +381,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </select>
           </div>
         </div>
+                                                        </div>
+                                                    <div class="col-md-3 col-md-offset-1">
                                                 <label for="usr">Codigo de segurança:</label>
                                                 <input type="text" class="form-control" id="usr" min="0" max="3">
+                                                </div>
+                                                </div>
+                                                <input class="btn btn-success col-lg-12" type="submit" value="Comprar" name="btnComprar" onClick="AposCompra()">
+                                                
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+                                                
+                                                
                                                 </div>
                                                 <script type="text/javascript">
                                                         function AposCompra() {
@@ -404,8 +415,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                                             //para a sessão do dia <//%=elem.getData()%> as <//%=elem.getHorarioInicio()%>
 
                                                     </script>
-                                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-                                                <input class="btn btn-success col-lg-12" type="submit" value="Comprar" name="btnComprar" onClick="AposCompra()">
+                                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalVenda<%=elem.getId()%>">Comprar</button>
                                             </div>
                                         </div>
                                         </form>
@@ -450,48 +460,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="w3ls_footer_grid">
 				<div class="col-md-6 w3ls_footer_grid_left">
 					<div class="w3ls_footer_grid_left1">
-						<h2>Subscribe to us</h2>
+						<h2>Receba novidades !</h2>
 						<div class="w3ls_footer_grid_left1_pos">
 							<form action="#" method="post">
-								<input type="email" name="email" placeholder="Your email..." required="">
-								<input type="submit" value="Send">
+								<input type="email" name="email" placeholder="Seu email..." required="">
+								<input type="submit" value="Enviar">
 							</form>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 w3ls_footer_grid_right">
-					<a href="index.jsp"><h2>One<span>Movies</span></h2></a>
+					<a href="index.jsp"><h2>CINE<span>TOLEDO</span></h2></a>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 			<div class="col-md-5 w3ls_footer_grid1_left">
 				<p>&copy; 2016 One Movies. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
 			</div>
-			<div class="col-md-7 w3ls_footer_grid1_right">
-				<ul>
-					<li>
-						<a href="genres.html">Movies</a>
-					</li>
-					<li>
-						<a href="faq.html">FAQ</a>
-					</li>
-					<li>
-						<a href="horror.html">Action</a>
-					</li>
-					<li>
-						<a href="genres.html">Adventure</a>
-					</li>
-					<li>
-						<a href="comedy.html">Comedy</a>
-					</li>
-					<li>
-						<a href="icons.html">Icons</a>
-					</li>
-					<li>
-						<a href="contact.html">Contact Us</a>
-					</li>
-				</ul>
-			</div>
+			
 			<div class="clearfix"> </div>
 		</div>
 	</div>
